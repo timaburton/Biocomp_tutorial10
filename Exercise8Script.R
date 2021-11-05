@@ -14,7 +14,7 @@ rand<- sample(1:100, 1)
 
 for (i in 1:10){
   print("I'm thinking of a number 1 to 100.", quote=FALSE)
-  usernum <- readline(prompt = "What is your guess?  ")
+  usernum <- as.integer(readline(prompt = "What is your guess?  "))
   if (i < 10){
     if (usernum > rand) {
       print("Lower", quote=FALSE)
