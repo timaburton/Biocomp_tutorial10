@@ -4,8 +4,9 @@
 ###Part 1
 ##Generate a plot similar using the data summarized in UWvMSU to show cumulative score throughout the game for University of Wisconsin vs Michigan State University
 
-df<-read.table("UWvMSU_1-22-13.txt", header=TRUE, sep=" ")
-
+df<-read.table("UWvMSU_1-22-13.txt", header=TRUE)
+UW <- (df[df$team=="UW",])
+MSU <- (df[df$team=="MSU",])
 
 ####Part 2 
 ###Guess my number 
@@ -34,5 +35,4 @@ for (i in 1:10){
     }
   }
 }
-
 
