@@ -8,7 +8,9 @@ df<-read.table("UWvMSU_1-22-13.txt", header=TRUE)
 UW <- (df[df$team=="UW",])
 MSU <- (df[df$team=="MSU",])
 UWdata <- data.frame(UW$time, cumsum(UW$score), stringAsFactors = FALSE)
+names(UWdata)<-c("Time", "Cumulative Score")
 MSUdata <- data.frame(MSU$time, cumsum(MSU$score), stringAsFactors = FALSE)
+names(MSUdata)<-c("Time", "Cumulative Score")
 
 ####Part 2 
 ###Guess my number 
