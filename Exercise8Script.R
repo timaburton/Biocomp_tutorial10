@@ -13,24 +13,24 @@ df<-read.table("UWvMSU_1-22-13.txt", header=TRUE, sep=" ")
 rand<- sample(1:100, 1)
 
 for (i in 1:10){
-  print("I'm thinking of a number 1 to 100.")
-  usernum <- readline(prompt = "What is your guess?")
+  print("I'm thinking of a number 1 to 100.", quote=FALSE)
+  usernum <- readline(prompt = "What is your guess?  ")
   if (i < 10){
     if (usernum > rand) {
-      print("Lower")
+      print("Lower", quote=FALSE)
     } else if (usernum < rand){
-        print("Higher")
+        print("Higher", quote=FALSE)
     } else {
-        print("Correct")
+        print("Correct", quote=FALSE)
       break 
       }
   }
   else {
     if (usernum == rand){
-      print("Correct")
+      print("Correct", quote=FALSE)
     }
     else {
-      print("Sorry. Thanks for playing.")
+      print("Sorry. Thanks for playing.", quote=FALSE)
     }
   }
 }
