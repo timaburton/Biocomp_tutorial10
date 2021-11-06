@@ -3,6 +3,8 @@
 
 ###Part 1
 ##Generate a plot similar using the data summarized in UWvMSU to show cumulative score throughout the game for University of Wisconsin vs Michigan State University
+data<-read.table("UWvMSU_1-22-13.txt", header = TRUE, sep = "\t")
+df<-as.data.frame(data)
 
 
 ####Part 2 
