@@ -11,11 +11,26 @@ df<-as.data.frame(data)
 rows<-nrow(df)
 time<-df$time
 
-#Make a loop that creates a vector of the scores cumulating over time. Need initial value 
+#Make a loop that creates a vector of the scores accumulating over time. Need initial value 
 UW<-0
 MSU<-0
 
+UWscore<-c(1:rows)
+MSUscore<-c(1:rows)
 
+for (i in 1:rows){
+  if (df$team[i]=="UW"){
+    UW <- UW + df$score[i]}
+  else if(df$team[i]=="MSU"){
+      MSU<- MSU + df$score[i]
+      UWscore[i]=UW
+      MSUscore[i]=MSU
+    }
+  }
+
+#Make plot
+library(ggplot2)
+ggplot(data=df, aes(x="time", y="score"))
 
 
 ####Part 2 
