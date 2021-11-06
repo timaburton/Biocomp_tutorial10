@@ -3,8 +3,19 @@
 
 ###Part 1
 ##Generate a plot similar using the data summarized in UWvMSU to show cumulative score throughout the game for University of Wisconsin vs Michigan State University
+#Load the data and make it a data frame
 data<-read.table("UWvMSU_1-22-13.txt", header = TRUE, sep = "\t")
 df<-as.data.frame(data)
+#Data frame headers: time, team, score. All data mixed together
+#Need to know the number of rows that have to be looped through
+rows<-nrow(df)
+time<-df$time
+
+#Make a loop that creates a vector of the scores cumulating over time. Need initial value 
+UW<-0
+MSU<-0
+
+
 
 
 ####Part 2 
