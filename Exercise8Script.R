@@ -7,31 +7,22 @@
 data<-read.table("UWvMSU_1-22-13.txt", header = TRUE, sep = "\t")
 df<-as.data.frame(data)
 #Data frame headers: time, team, score. All data mixed together
-#Need to know the number of rows that have to be looped through
-rows<-nrow(df)
-time<-df$time
+#Pull out data for UW and MSU separately
+UWscore <-df[df$team == "UW",]
+MSUscore <-df[df$team == "MSU",]
+#Vectors for UW
+UWtime<-UWscore$time
+UWcscore<-cumsum(UWscore$score)
+#Vectors for MSU
+MSUtime<-MSUscore$time
+MSUcscore<-cumsum(MSUscore$score)
 
-#Make a loop that creates a vector of the scores accumulating over time. Need initial value 
-UW<-0
-MSU<-0
-
-UWscore<-c(1:rows)
-MSUscore<-c(1:rows)
-
-for (i in 1:rows){
-  if (df$team[i]=="UW"){
-    UW <- UW + df$score[i]}
-  else if(df$team[i]=="MSU"){
-      MSU<- MSU + df$score[i]
-      UWscore[i]=UW
-      MSUscore[i]=MSU
-    }
-  }
+UWdf<-data.frame(UWtime, UWcscore)
+MSUdf<-data.frame(MSUtime, MSUcscore)
 
 #Make plot
 library(ggplot2)
-ggplot(data=df, aes(x="time", y="score"))
-
+ggplot()+geom_line(data = UWdf, aes(x=UWtime, y=UWcscore),color="red")+geom_line(data=MSUdf, aes(x=MSUtime, y=MSUcscore), color = "darkgreen")+ ggtitle("Cumulative Score for UW vs MSU Basketball Game")+ xlab("Time")+ylab("Cumulative Score")
 
 ####Part 2 
 ###Guess my number 
