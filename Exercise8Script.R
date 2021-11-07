@@ -25,13 +25,6 @@ plot(UWdf, type = "l", col = "red", main = "Cumulative Score for UW vs MSU Baske
 lines(MSUdf, type = "l", col = "green")
 legend("topleft", legend=c("UW", "MSU"), col=c("red", "green"), lty = 1, lwd = 2, title = "Team", box.lty=0, cex = 0.75)
 
-
-library(ggplot2)
-ggplot()+geom_line(data = UWdf, aes(x=UWtime, y=UWcscore), color = "red")+
-  geom_line(data=MSUdf, aes(x=MSUtime, y=MSUcscore), color = "darkgreen")+ 
-  ggtitle("Cumulative Score for UW vs MSU Basketball Game")+ 
-  xlab("Time")+ylab("Cumulative Score")+legend("topleft", legend = c("UW", "MSU"), col = c("red", "darkgreen"))
-  
 ####Part 2 
 ###Guess my number 
 
