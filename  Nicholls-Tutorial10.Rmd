@@ -1,0 +1,84 @@
+---
+title: "BioComp_Tutorial10-Sarah NIcholls"
+author: "Sarah Nicholls"
+date: "11/5/2021"
+output: html_document
+---
+
+## Load Packages
+
+```{r packages}
+library(tidyverse)
+library(dplyr)
+```
+
+## 1
+
+```{r 1.1}
+Basketball <- read.table("UWvMSU_1-22-13.txt", header = T)
+
+#SUM of UW score
+Basketball_UW <- Basketball %>%
+  filter(team == "UW")
+
+UW_cumulative <- vector()
+UW_cumulative[1] = 3
+a <- seq.int(2,23,1)
+for(i in a){
+  UW_cumulative[i] = UW_cumulative[i-1] + Basketball_UW$score[i]
+}
+Basketball_UW$sum <- UW_cumulative
+
+#SUM of MSU score
+Basketball_MSU <- Basketball %>%
+  filter(team == "MSU")
+
+MSU_cumulative <- vector()
+MSU_cumulative[1] = 2
+a <- seq.int(2,27,1)
+for(i in a){
+  MSU_cumulative[i] = MSU_cumulative[i-1] + Basketball_MSU$score[i]
+}
+Basketball_MSU$sum <- MSU_cumulative
+Basketball_MSU
+```
+
+
+```{r 1.2}
+#Plot Score vs. Time on the same graph
+plot(Basketball_MSU$time, Basketball_MSU$sum, type ="l", col = "red", xlab = "Time (in Minutes)", ylab = "Score", main = "MSU vs UW")
+lines(Basketball_UW$time, Basketball_UW$sum, type ="l", col = "blue")
+legend (5,50, legend = c("MSU", "UW"), col = c("red", "blue"), lty = 1.2, cex = 0.8)
+grid()
+```
+
+```{r 2.1}
+a <- seq.int(1,100,1)
+num <- sample(a, 1)
+x = 1
+print("I am thinking of a number between 1 and 100...")
+print("You have 10 guesses!")
+guess = readline("Guess the number: ")
+guess = as.integer(guess)
+while(guess != num & x != 11){
+  if(guess < num){
+    print("Higher")
+    guess = readline("Guess Again!: ")
+    guess = as.integer(guess)
+    x=x+1
+    }
+  if(guess > num){
+    print("Lower")
+    guess = readline("Guess Again!: ")
+    guess = as.integer(guess)
+    x=x+1
+    }
+  }
+if(guess == num){
+      print("Correct!")
+}
+if(x == 11){
+  print("Sorry you have ran out of guesses!")
+}
+```
+
