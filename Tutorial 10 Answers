@@ -1,0 +1,37 @@
+#Question 1
+sports <- read.table("UWvMSU_1-22-13.txt",header=TRUE,sep="",
+                     stringsAsFactors=FALSE)
+ UWsports <- sports[sports$team == "UW",]
+ MSUsports <- sports[sports$team == "MSU",]
+ UWsports$score = cumsum(UWsports$score)
+ MSUsports$score = cumsum(MSUsports$score)
+plot(c(0,UWsports$time,40), 
+     c(0,UWsports$score,max(UWsports$score)), 
+     xlab="time", 
+     ylab="score",type="l", 
+     xlim=c(0,40), 
+     ylim=c(0,max(c(UWsports$score,MSUsports$score))+3), 
+     col="red")
+ lines(c(0,MSUsports$time,40), 
+       c(0,MSUsports$score,max(MSUsports$score)), col="blue")
+
+ 
+
+#Question 2
+readinteger <- function()
+{n <- readline(prompt="Enter an integer: ")
+  if(!grepl("^[0-9]+$",n))
+  {return(readinteger())}
+  return(as.integer(n))}
+num <- round(runif(1) * 100, digits = 0)
+guess <- -1
+cat("Guess a number between 0 and 100.\n")
+while(guess != num)
+{guess <- readinteger()
+  if (guess == num)
+  {cat("Congratulations,", num, "is right.\n")}
+  else if (guess < num)
+  {cat("It's bigger!\n")}
+  else if(guess > num)
+  {cat("It's smaller!\n")}}
+  
