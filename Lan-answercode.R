@@ -14,19 +14,17 @@ legend("topleft", legend=c("MUS", "UW"),
 
 
 ##2. game “guess my number”.
-number <- sample(c(1:100),1)
+number <-  sample.int(100,1)
 for(i in 1:10){
-guess <- readline(prompt="your guess: ")
-i = i+1
-if(number!=guess){
-  if(number>guess){
-    print("higher")
+  guess <- as.numeric(readline(prompt="your guess: "))
+  if(number == guess){
+    print("correct")
+    break
   }else{
+    if(number > guess){
+      print("higher")
+    }else{
       print("lower")
+    }
   }
-}else{
-  print("correct!")
-  break
-}
-i = i+1
 }
