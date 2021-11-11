@@ -13,7 +13,7 @@ legend("topleft", legend=c("MUS", "UW"),
        col=c("red", "blue"), lty = 1:2, cex=0.8)
 
 
-##2. game “guess my number”.
+##2. game “guess my number”
 number <-  sample.int(100,1)
 for(i in 1:10){
   guess <- as.numeric(readline(prompt="your guess: "))
