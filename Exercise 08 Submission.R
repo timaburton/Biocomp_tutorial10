@@ -31,13 +31,13 @@ lines(x2,y2)
 randomnum<-sample(1:100,1)
 # Limit to 10 guesses
 for (i in 1:10){
-  guess<-readline(prompt="Pick a number from 1 to 100")}
+  guess<-readline(prompt="Pick a number from 1 to 100")
 # Generate output "lower", "higher", and "correct"
 if(randomnum<guess){
   print("lower")
   }else if(randomnum>guess){
       print("higher")
-        }else{
+        }else
   if(randomnum==guess){
     print("correct!")
   }
