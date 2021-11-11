@@ -1,6 +1,6 @@
 ### Problem 1 ###
 
-setwd("C:/Users/Julian Najera/OneDrive - Johns Hopkins/Documents/Notre Dame/Semester 1/Introduction to Biocomputing/Biocomp_tutorial10//")
+setwd("C:/Users/Julian Najera/OneDrive - Johns Hopkins/Documents/Notre Dame/Semester 1/Introduction to Biocomputing/Biocomp_tutorial10/")
 
 game <- read.table("UWvMSU_1-22-13.txt",header = TRUE,sep = "",stringsAsFactors = FALSE)
 
@@ -50,7 +50,7 @@ lines(x2,y2)
 guess_my_number <- function(number) {
 
   for (i in 1:10){
-    my.guess <- readline(prompt = "Guess a Number Between 1-100: ")
+    my.guess <- strtoi(readline(prompt = "Guess a Number Between 1-100: "), base=0L)
     if (my.guess > number){
       print("Lower")
     } else if (my.guess < number){
@@ -65,4 +65,4 @@ guess_my_number <- function(number) {
 ## Test ##
 
 number <- sample(100,1)
-guess_my_number(number)
+
