@@ -40,11 +40,17 @@ legend("topleft",
 ## generate random number that the user will try to guess what it is
 magicNum = sample(1:100,1, replace = TRUE)
 
+## tell the user about the guessing game
 print("Welcome the Guessing Game. You will have 10 chances to guess the number (1-100) I am thinking of. Are you ready? Here we go.")
+
+## set counter for guess attempts
 counter = 1
 
+## create while loop to end after 10 guess attempts have been made or correct answer 
 while (counter <= 10) {
+  ## have user input guess
   guess = readline(prompt ="Please enter your guess: ")
+  ## set if else statements for when user guesses right, too high, or too low
   if (guess == magicNum){
     print("WOW WEE WOW WOO WOW! You got it right! Congrats!")
     options("show.error.messages" = F)
