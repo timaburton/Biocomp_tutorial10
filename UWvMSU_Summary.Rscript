@@ -1,0 +1,26 @@
+#Parse score data for each team
+data <- read.table("UWvMSU_1-22-13.txt",header = TRUE, stringsAsFactors = FALSE)
+UWscores <- data[data$team=="UW",]
+MSUscores <- data[data$team=="MSU",]
+
+#Create cummulative totals for each team 
+UWtotal <- numeric(length(UWscores$score))
+for(row in 1:length(UWscores$score)){
+  UWtotal[row] <- sum(UWscores$score[1:row])
+}
+
+MSUtotal <- numeric(length(MSUscores$score))
+for(row in 1:length(MSUscores$score)){ 
+  MSUtotal[row] <- sum(MSUscores$score[1:row])
+}
+
+# Assign cummulative scores and totals to coordinates and plot on one graph
+x1 <- UWscores$time
+y1 <- UWtotal
+x2 <- MSUscores$time
+y2 <- MSUtotal
+plot(x1,y1,type = "l", pch=19, main = "UW vs. MSU Basketball 
+     1-22-13", col="red", xlab = "Time (min)", ylab = "Score")
+lines(x2,y2, pch=18, col="blue", type = "l", lty=2)
+legend(25, 15, legend=c("UW", "MSU"), col=c("red","blue"), lty = 1:2, cex = 0.8)
+
