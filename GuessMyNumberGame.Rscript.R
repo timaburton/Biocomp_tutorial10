@@ -4,10 +4,9 @@
 ###for correct and incorrect guesses.
 
 #Generate a random number between 1 and 100
-range <- 1:100
-sample(range, 1)
 
-randonumber <- sample(range,1)
+range <- 1:100
+randonumber <- sample(range, i)
 
 # Write a for loop that allows a user to guess up to ten times
 # Output 'Lower' if guess is greater than random number
@@ -16,6 +15,7 @@ randonumber <- sample(range,1)
 
 for (i in 1:10) {
   guess <- readline(prompt = "Guess:")
+  guess <- as.integer(guess)
     if (guess > randonumber){
       print("Lower")
     } else if (guess < randonumber){
@@ -25,5 +25,3 @@ for (i in 1:10) {
       break
     }
   }
-  
-  
